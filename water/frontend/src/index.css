@@ -1,3 +1,70 @@
+@import 'typeface-poppins';
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to top right, #ffffff 0%, #9db6e4 100%)
+  /* background: linear-gradient(
+    90deg,
+    rgba(88, 63, 230, 1) 0%,
+    rgba(96, 217, 211, 1) 0%,
+    rgba(27, 152, 177, 1) 100%
+  ); */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 19px 10px 20px;
+  width: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.homeMargin {
+  margin-top: 10px;
+  font-size: 2.5rem;
+}
+.nav{
+  /* border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; */
+  background: linear-gradient(to top right, #332733 18%, #0066ff 100%);
+
+  opacity: 0.7;
+
+  
+}
+.bg-footer{
+  background-image:url("./slider/waterbg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 600px;
+}
+.yellow {
+  color: white
+
+}
+.yellow:hover {
+  color: white
+
+}
+.cart{
+  font-size:17px;
+}
+.signIn{
+  font-size:17px;
+}
+.cartinfo {
+  font-size: 1.2rem;
+}
+
+.headerFont {
+  font-size: 1.5rem;
+}
+
 main {
   min-height: 80vh;
 }

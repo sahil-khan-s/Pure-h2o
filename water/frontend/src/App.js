@@ -13,13 +13,14 @@ import ShippingScreen from './screens/ShippingScreen'
 import PaymentScreen from './screens/PaymentScreen'
 import PlaceOrderScreen from './screens/PlaceOrderScreen'
 import OrderScreen from './screens/OrderScreen'
+import './index.css'
 
 function App() {
   return (
     <Router>
       <Header />
-      <main className='py-3'>
-        <Container>
+      <main className='py-1'>
+      <div>
           <Routes>
             <Route path='/order/:id' element={<OrderScreen />} />
             <Route path='/shipping' element={<ShippingScreen />} />
@@ -32,7 +33,7 @@ function App() {
             <Route path='/cart/:id?' element={<CartScreen />} />
             <Route path='/' exact element={<HomeScreen />} />
           </Routes>
-        </Container>
+        </div>
       </main>
       <Footer />
     </Router>

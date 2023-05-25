@@ -5,18 +5,20 @@ import Rating from './Rating'
 
 const product = ({ product }) => {
   return (
-    <Card className='my-3 p-3 rounded'>
+    <Card className='my-3 p-3  ' style={{borderRadius:'20px', 
+    }}>
       <Link to={`/product/${product._id}`}>
         <Card.Img src={product.image} variant='top' />
       </Link>
-      <Card.Body>
+      <Card.Body style={{display:'flex ' , justifyContent:'center' , flexDirection:'column', alignItems: 'center'}}>
         <Link className='text-decoration-none' to={`/product/${product._id}`}>
           <Card.Title as='div'>
-            <strong>{product.name}</strong>
+            <strong style={{fontSize: '24px' , fontWeight:'bold' ,
+          textAlign: 'center'}}>{product.name}</strong>
           </Card.Title>
         </Link>
         <Card.Text as='div'>
-          <Rating
+          <Rating 
             value={product.rating}
             text={`${product.numReviews} reviews`}
           />

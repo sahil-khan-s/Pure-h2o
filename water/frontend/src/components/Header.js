@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import { logout } from '../actions/userActions'
+import '../index.css'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -16,17 +17,30 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar  className='nav'
+      style={{ color: 'white' ,
+      position : 'fixed', 
+      zIndex : '1000'
+      }}  expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>PureH2O</Navbar.Brand>
+            <Navbar.Brand className='yellow logo'>Pure-H2O</Navbar.Brand>
+          </LinkContainer>
+          <LinkContainer style={{paddingLeft:'200px'}} to='/'>
+            <Navbar.Brand  className='yellow logo'>Home </Navbar.Brand>
+          </LinkContainer>
+          <LinkContainer to='/'>
+            <Navbar.Brand className='yellow logo'>About Us</Navbar.Brand>
+          </LinkContainer>
+          <LinkContainer to='/'>
+            <Navbar.Brand className='yellow logo'>Contact Us  </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               <LinkContainer to='/cart'>
-                <Nav.Link>
-                  <i className='fas fa-shopping-cart'></i>Cart
+                <Nav.Link className='yellow cart'>
+                  <i className=' fas fa-shopping-cart yellow'></i>Cart
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
@@ -40,8 +54,8 @@ const Header = () => {
                 </NavDropdown>
               ) : (
                 <LinkContainer to='/login'>
-                  <Nav.Link>
-                    <i className='fas fa-user'></i>Sign In
+                  <Nav.Link className='yellow signIn'>
+                    <i className=' fas fa-user yellow'></i>Sign In
                   </Nav.Link>
                 </LinkContainer>
               )}
