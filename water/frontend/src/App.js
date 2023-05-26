@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen'
 import CartScreen from './screens/CartScreen'
+import AboutScreen from './screens/AboutScreen'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
@@ -13,6 +14,8 @@ import ShippingScreen from './screens/ShippingScreen'
 import PaymentScreen from './screens/PaymentScreen'
 import PlaceOrderScreen from './screens/PlaceOrderScreen'
 import OrderScreen from './screens/OrderScreen'
+import ContactUs from './screens/ContactUs'
+
 import './index.css'
 
 function App() {
@@ -32,6 +35,9 @@ function App() {
             <Route path='/product/:id' element={<ProductScreen />} />
             <Route path='/cart/:id?' element={<CartScreen />} />
             <Route path='/' exact element={<HomeScreen />} />
+            <Route path='/AboutScreen' exact element={<AboutScreen />} />
+            <Route path='/ContactUs' exact element={<ContactUs />} />
+
           </Routes>
         </div>
       </main>

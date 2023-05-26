@@ -33,14 +33,15 @@ const LoginScreen = () => {
   }
 
   return (
-    <FormContainer>
-      <h1>Sign In</h1>
+    <FormContainer style={{ fontWeight:'bold' , marginTop:'50px'}}>
+      <h1 style={{color:'white'}}>Sign In</h1>
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='email'>
-          <Form.Label>Email Address</Form.Label>
-          <Form.Control
+          <Form.Label style={{color:'white'}}>Email Address</Form.Label>
+          <Form.Control 
+          style={{ borderRadius:'10px'}}
             type='email'
             placeholder='Enter email'
             value={email}
@@ -48,9 +49,9 @@ const LoginScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId='password'>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
+        <Form.Group style={{ fontWeight:'bold' , marginTop:'20px'}} controlId='password'>
+          <Form.Label style={{color:'white'}}>Password</Form.Label>
+          <Form.Control style={{ borderRadius:'10px'}}
             type='password'
             placeholder='Enter password'
             value={password}
@@ -58,13 +59,13 @@ const LoginScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
+        <Button style={{  marginTop:'20px',border:'2px solid white' , borderRadius:'10px' , color:'white' , background:'transparent'}} type='submit' variant='primary'>
           Sign In
         </Button>
       </Form>
 
       <Row className='py-3'>
-        <Col>
+        <Col style={{color:'white'}}>
           New Customer?{' '}
           <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
             Register

@@ -22,17 +22,17 @@ const Header = () => {
       position : 'fixed', 
       zIndex : '1000'
       }}  expand='lg' collapseOnSelect>
-        <Container>
+        <Container> 
           <LinkContainer to='/'>
             <Navbar.Brand className='yellow logo'>Pure-H2O</Navbar.Brand>
           </LinkContainer>
           <LinkContainer style={{paddingLeft:'200px'}} to='/'>
             <Navbar.Brand  className='yellow logo'>Home </Navbar.Brand>
           </LinkContainer>
-          <LinkContainer to='/'>
+          <LinkContainer to='/AboutScreen'>
             <Navbar.Brand className='yellow logo'>About Us</Navbar.Brand>
           </LinkContainer>
-          <LinkContainer to='/'>
+          <LinkContainer to='/ContactUs'>
             <Navbar.Brand className='yellow logo'>Contact Us  </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -40,7 +40,7 @@ const Header = () => {
             <Nav className='ms-auto'>
               <LinkContainer to='/cart'>
                 <Nav.Link className='yellow cart'>
-                  <i className=' fas fa-shopping-cart yellow'></i>Cart
+                  <i className=' fas fa-shopping-cart yellow cart'></i>Cart
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (

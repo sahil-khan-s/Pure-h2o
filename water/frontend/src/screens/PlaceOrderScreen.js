@@ -60,35 +60,36 @@ const PlaceOrderScreen = () => {
 
   return (
     <>
-      <CheckoutSteps step1 step2 step3 step4 />
-      <Row>
-        <Col md={8}>
-          <ListGroup variant='flush'>
-            <ListGroup.Item>
-              <h2>Shipping</h2>
-              <p>
-                <strong>Address: </strong>
+    <div  >
+      <CheckoutSteps  step1 step2 step3 step4 />
+      <Row style={{marginLeft:'100px'}} >
+        <Col md={8} style={{margin:'40px' ,width:'50% ' ,border:'2px solid white' ,borderRadius:'14px ' ,padding:'0px 0px 30px 0px' }}>
+          <ListGroup style={{marginTop:'40px' }} variant='flush'>
+            <ListGroup.Item style={{background:'transparent' ,color:'white'}}>
+              <h2 style={{textAlign:'center'}}>Shipping</h2>
+              <p style={{ fontWeight:'bold'}}>
+                <strong >Address: </strong>
                 {cart.shippingAddress.address}, {cart.shippingAddress.city},{' '}
                 {cart.shippingAddress.postalCode},{' '}
                 {cart.shippingAddress.country}
               </p>
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            <ListGroup.Item style={{background:'transparent' ,color:'white'}} >
               <h2>Payment Method</h2>
               <strong>Method: </strong>
               {cart.paymentMethod}
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            <ListGroup.Item style={{background:'transparent' ,color:'white'}}>
               <h2>Order Items</h2>
               {cart.cartItems.length === 0 ? (
                 <Message>Your cart is empty</Message>
               ) : (
                 <ListGroup variant='flush'>
                   {cart.cartItems.map((item, index) => (
-                    <ListGroup.Item key={index}>
-                      <Row>
+                    <ListGroup.Item key={index} style={{background:'transparent' ,color:'white'}}>
+                      <Row >
                         <Col md={1}>
                           <Image
                             src={item.image}
@@ -98,7 +99,7 @@ const PlaceOrderScreen = () => {
                           />
                         </Col>
                         <Col>
-                          <Link to={`/product/${item.product}`}>
+                          <Link style={{color:'white' ,textDecoration:'none'}} to={`/product/${item.product}`}>
                             {item.name}
                           </Link>
                         </Col>
@@ -110,49 +111,49 @@ const PlaceOrderScreen = () => {
                   ))}
                 </ListGroup>
               )}
-            </ListGroup.Item>
+            </ListGroup.Item >
           </ListGroup>
         </Col>
         <Col md={4}>
-          <Card>
-            <ListGroup variant='flush'>
-              <ListGroup.Item>
+          <Card style={{ background:'transparent',color:'white' ,marginTop:'40px' ,border:'2px solid white' ,borderRadius:'14px', padding:'20px 0px 20px 0px'}} >
+            <ListGroup variant='flush' style={{ background:'',color:'white'}}>
+              <ListGroup.Item   style={{ background:'transparent',paddingTop:'30px',color:'white'}} >
                 <h2>Order Summary</h2>
               </ListGroup.Item>
-              <ListGroup.Item>
+              <ListGroup.Item style={{ background:'transparent',color:'white'}}>
                 <Row>
                   <Col>Items</Col>
                   <Col>{cart.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
 
-              <ListGroup.Item>
+              <ListGroup.Item style={{ background:'transparent',color:'white'}}>
                 <Row>
                   <Col>Shipping</Col>
                   <Col>{cart.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
 
-              <ListGroup.Item>
+              <ListGroup.Item style={{ background:'transparent',color:'white'}}>
                 <Row>
                   <Col>Tax</Col>
                   <Col>{cart.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
 
-              <ListGroup.Item>
-                <Row>
+              <ListGroup.Item style={{ background:'transparent',color:'white'}}>
+                <Row style={{ background:'transparent',color:'white'}}>
                   <Col>Total</Col>
                   <Col>{cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
 
-              <ListGroup.Item>
+              <ListGroup.Item style={{ background:'transparent',color:'white'}}>
                 {error && <Message variant='danger'>{error}</Message>}
               </ListGroup.Item>
 
-              <ListGroup.Item>
-                <Button
+              <ListGroup.Item style={{ background:'transparent',color:'white'}}>
+                <Button style={{ background:'transparent',color:'white' ,border:'2px solid white' ,borderRadius:'10px' ,marginTop:'60px'}}
                   type='button'
                   className='btn w-100'
                   disabled={cart.cartItems === 0}
@@ -165,7 +166,10 @@ const PlaceOrderScreen = () => {
           </Card>
         </Col>
       </Row>
+      </div>
     </>
+
+
   )
 }
 

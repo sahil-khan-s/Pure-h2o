@@ -25,14 +25,16 @@ const PaymentScreen = () => {
   }
 
   return (
-    <FormContainer>
+    <div style={{paddingBottom:'60px'}}>
       <CheckoutSteps step1 step2 step3 />
-      <h1>Payment Method</h1>
+    <FormContainer>
+      <h1 style={{color: 'white', fontWeight:'bold' , fontSize:'40px'}}>Payment Method</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group>
-          <Form.Label as='legend'>Select Method</Form.Label>
+          <Form.Label style={{color: 'white' }} as='legend'>Select Method</Form.Label>
           <Col>
             <Form.Check
+            style={{color: 'white'}}
               type='radio'
               label='PayPal or Credit Card'
               id='PayPal'
@@ -41,22 +43,25 @@ const PaymentScreen = () => {
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
-            <Form.Check
+            {/* <Form.Check
+            style={{color: 'white', marginTop:'10px'}}
               type='radio'
               label='Stripe'
               id='Stripe'
               name='paymentMethod'
               value='Stripe'
               onChange={(e) => setPaymentMethod(e.target.value)}
-            ></Form.Check>
+            ></Form.Check> */}
           </Col>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
+        <Button style={{color: 'white',background:'transparent', border: '2px solid white',borderRadius:'10px' , margin:'20px 0px'}} type='submit' variant='primary'>
           Continue
         </Button>
       </Form>
     </FormContainer>
+    </div>
+
   )
 }
 

@@ -28,7 +28,8 @@ const ProductScreen = () => {
 
   return (
     <>
-      <Link className='btn btn-light my-3' to='/'>
+    <div style={{marginTop:'90px' , padding:'10px 116px'}}>
+      <Link style={{border:'2px solid white' , borderRadius:'10px' , color:'white'}} className='btn  my-3' to='/'>
         Go back
       </Link>
       {loading ? (
@@ -37,10 +38,10 @@ const ProductScreen = () => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <Row>
-          <Col md={6}>
+          <Col md={4}>
             <Image src={product.image} alt={product.name} fluid />
           </Col>
-          <Col md={3}>
+          <Col md={4}>
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <h3>{product.name}</h3>
@@ -57,7 +58,7 @@ const ProductScreen = () => {
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col md={3}>
+          <Col md={4}>
             <Card>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
@@ -139,6 +140,7 @@ const ProductScreen = () => {
           </Col>
         </Row>
       )}
+      </div>
     </>
   )
 }

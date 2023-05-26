@@ -25,12 +25,13 @@ const ShippingScreen = () => {
   }
 
   return (
-    <FormContainer>
+    <div style={{}}>
       <CheckoutSteps step1 step2 />
+    <FormContainer>
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='address'>
-          <Form.Label>Address</Form.Label>
+          <Form.Label style={{color:'white'}}>Address</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter address'
@@ -41,7 +42,7 @@ const ShippingScreen = () => {
         </Form.Group>
 
         <Form.Group controlId='city'>
-          <Form.Label>City</Form.Label>
+          <Form.Label style={{color:'white' , marginTop: '10px'}}>City</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter city'
@@ -52,7 +53,7 @@ const ShippingScreen = () => {
         </Form.Group>
 
         <Form.Group controlId='postalCode'>
-          <Form.Label>PostalCode</Form.Label>
+          <Form.Label style={{color:'white' ,marginTop: '10px'}}>PostalCode</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter postalCode'
@@ -63,7 +64,7 @@ const ShippingScreen = () => {
         </Form.Group>
 
         <Form.Group controlId='country'>
-          <Form.Label>Country</Form.Label>
+          <Form.Label style={{color:'white' , marginTop: '10px'}}>Country</Form.Label>
           <Form.Control
             type='country'
             placeholder='Enter country'
@@ -72,12 +73,13 @@ const ShippingScreen = () => {
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
 
-          <Button type='submit' variant='primary'>
+          <Button style={{margin: '20px 0px' , background:'gray' , color : 'white'}} type='submit' variant='primary'>
             Continue
           </Button>
         </Form.Group>
       </Form>
     </FormContainer>
+    </div>
   )
 }
 

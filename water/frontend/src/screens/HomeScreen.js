@@ -25,7 +25,7 @@ const HomeScreen = () => {
 
       <PureH2o/>
 
-      <h1 className=' center homeMargin'>Latest Products</h1>
+      <h1 style={{color:'white'}} className=' center homeMargin'>Latest Products</h1>
       {loading ? (
         <Loader />
       ) : error ? (

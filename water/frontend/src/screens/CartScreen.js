@@ -34,27 +34,31 @@ const CartScreen = () => {
   }
 
   return (
-    <Row>
-      <Col md={8}>
-        <h1>Shopping Cart</h1>
+
+    <div className='' style={{padding: '122px 0px 0px 0px' ,   background: 'linear-gradient(to top right, #243558 28%, #8bb6f7 70%)'
+  }}>
+
+    <Row style={{background: 'transparent'}}>
+      <Col md={12} style={{background: 'transparent'}}>
+        <h1 style={{fontSize:'48px' , fontWeight:'bold' , color : 'white'}} className='text-center '>Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <Message>
             Your cart is empty <Link to='/'>Go Back</Link>
           </Message>
         ) : (
-          <ListGroup variant='flush'>
+          <ListGroup style={{background:'transparent' , padding:'40px 0px 20px 90px '}} variant='flush'>
             {cartItems.map((item) => (
-              <ListGroup.Item key={item.product}>
-                <Row>
-                  <Col md={2}>
-                    <Image src={item.image} alt={item.name} fluid rounded />
+              <ListGroup.Item key={item.product} style={{background:'transparent'}}>
+                <Row style={{background:'transparent' , display: 'flex ' , alignItems: 'baseline'}}>
+                  <Col md={2}  style={{background:'transparent',}}>
+                    <Image style={{background:'transparent'}} src={item.image} alt={item.name} fluid rounded />
                   </Col>
                   <Col md={3}>
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
+                    <Link style={{fontSize:'26px' ,color : 'white', textDecoration:'none' , fontWeight:'bold'}} to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>{item.price} Rs</Col>
-                  <Col md={2}>
-                    <Form.Control
+                  <Col style={{fontSize:'26px' ,color : 'white', textDecoration:'none' , fontWeight:'bold'}} md={2}>{item.price} Rs</Col>
+                  <Col md={2} >
+                    <Form.Control  style={{background:'transparent',color : 'white' ,border:'2px solid white' , borderRadius:'10px' ,fontSize:'19px' , fontWeight:'bold'}}
                       as='select'
                       value={item.qty}
                       onChange={(e) =>
@@ -64,7 +68,7 @@ const CartScreen = () => {
                       }
                     >
                       {[...Array(item.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
+                        <option style={{background:'white' , color:'black'}} key={x + 1} value={x + 1}>
                           {x + 1}
                         </option>
                       ))}
@@ -72,6 +76,7 @@ const CartScreen = () => {
                   </Col>
                   <Col md={2}>
                     <Button
+                    style={{background:'transparent', color : 'white'}}
                       type='button'
                       variant='light'
                       onClick={() => removeFromCartHandler(item.product)}
@@ -85,11 +90,14 @@ const CartScreen = () => {
           </ListGroup>
         )}
       </Col>
-      <Col md={4}>
-        <Card>
-          <ListGroup variant='flush'>
-            <ListGroup.Item>
-              <h2>
+      </Row>
+      <div  className=' text-center '>
+        <Row className=''>
+      <Col md={12}>
+        <Card style={{background:'transparent'}}>
+          <ListGroup variant='flush' style={{background:'transparent'}}>
+            <ListGroup.Item style={{background:'transparent' , color : 'white' , fontWeight: 'bold'}}>
+              <h2 style={{color : 'white'}}>
                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                 items
               </h2>
@@ -98,8 +106,9 @@ const CartScreen = () => {
                 .toFixed(2)}{' '}
               Rs
             </ListGroup.Item>
-            <ListGroup.Item>
+            <ListGroup.Item style={{background:'transparent ',  padding: '45px 0px' , border:'none'}}>
               <Button
+              style={{background:'transparent ' ,borderRadius: '10px' , padding: '15px 10px', border:'2px white solid' }}
                 type='button'
                 className='btn-block'
                 disabled={cartItems.length === 0}
@@ -112,6 +121,9 @@ const CartScreen = () => {
         </Card>
       </Col>
     </Row>
+    </div>
+    </div>
+
   )
 }
 

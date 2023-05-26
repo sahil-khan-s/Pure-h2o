@@ -54,91 +54,41 @@ const ProfileScreen = () => {
   }
 
   return (
-    <Row>
-      <Col md={3}>
-        <h2>User Profile</h2>
-        {message && <Message variant='danger'>{message}</Message>}
-        {error && <Message variant='danger'>{error}</Message>}
-        {success && <Message variant='success'>Profile Updated</Message>}
-        {loading && <Loader />}
-        <Form onSubmit={submitHandler}>
-          <Form.Group controlId='name'>
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type='name'
-              placeholder='Enter name'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
-          <Form.Group controlId='email'>
-            <Form.Label>Email Address</Form.Label>
-            <Form.Control
-              type='email'
-              placeholder='Enter email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
-          <Form.Group controlId='password'>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type='password'
-              placeholder='Enter password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
-          <Form.Group controlId='confirmPassword'>
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type='password'
-              placeholder='Confirm password'
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
-          <Button type='submit' variant='primary'>
-            Update
-          </Button>
-        </Form>
-      </Col>
-      <Col md={9}>
-        <h2>My Orders</h2>
+    <div className='py-4'>
+    <Row style={{ marginTop:'100px' , padding: '0px 130px'}}>
+      
+      <Col  md={12}>
+        <h2 style={{color:'white' , fontWeight:'bold'}}>My Orders</h2>
         {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
           <Message variant='danger'>{errorOrders}</Message>
         ) : (
-          <Table striped bordered hover responsive className='table-sm'>
+          <Table style={{border : '2px solid white'}} striped bordered hover responsive className='table-sm'>
             <thead>
-              <tr>
-                <th>ID</th>
-                <th>DATE</th>
-                <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
-                <th></th>
+              <tr >
+                <th style={{color:'white' , fontWeight:'bold' , fontSize:'22px'}}>ID</th>
+                {/* <th style={{color:'white' , fontWeight:'bold'}}>DATE</th> */}
+                <th style={{color:'white' , fontWeight:'bold',fontSize:'22px'}}>TOTAL</th>
+                <th style={{color:'white' , fontWeight:'bold',fontSize:'22px'}}>PAID</th>
+                <th style={{color:'white' , fontWeight:'bold',fontSize:'22px'}}>DELIVERED</th>
+                <th style={{color:'white' , fontWeight:'bold',fontSize:'22px'}}>Details</th>
               </tr>
             </thead>
             <tbody>
               {orders.map((order) => (
                 <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.createdAt && order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice}</td>
-                  <td>
+                  <td style={{color:'white' , fontWeight:'bold'}}>{order._id}</td>
+                  {/* <td style={{color:'white' , fontWeight:'bold'}}>{order.createdAt && order.createdAt.substring(0, 10)}</td> */}
+                  <td style={{color:'white' , fontWeight:'bold'}}>{order.totalPrice}</td>
+                  <td style={{color:'white' , fontWeight:'bold'}}>
                     {order.isPaid ? (
                       order.paidAt && order.paidAt.substring(0, 10)
                     ) : (
                       <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}
                   </td>
-                  <td>
+                  <td style={{color:'white' , fontWeight:'bold'}}>
                     {order.isDelivered ? (
                       order.deliveredAt && order.deliveredAt.substring(0, 10)
                     ) : (
@@ -146,8 +96,8 @@ const ProfileScreen = () => {
                     )}
                   </td>
                   <td>
-                    <LinkContainer to={`/order/${order._id}`}>
-                      <Button className='btn-sm' variant='light'>
+                    <LinkContainer style={{ fontWeight:'bold'}} to={`/order/${order._id}`}>
+                      <Button style={{ fontWeight:'bold'}} className='btn-sm' variant='light'>
                         Details
                       </Button>
                     </LinkContainer>
@@ -159,6 +109,65 @@ const ProfileScreen = () => {
         )}
       </Col>
     </Row>
+    <Row style={{ marginTop:'30px' , padding: '0px 280px' , borderRadius:'10px'}}>
+      <Col md={12}>
+        <h2 style={{ fontWeight:'bold' , color:'white'}}>User Profile</h2>
+        {message && <Message variant='danger'>{message}</Message>}
+        {error && <Message variant='danger'>{error}</Message>}
+        {success && <Message variant='success'>Profile Updated</Message>}
+        {loading && <Loader />}
+        <Form onSubmit={submitHandler}>
+          <Form.Group controlId='name'>
+            <Form.Label style={{  borderRadius:'10px' ,fontWeight:'bold',color:'white'}}>Name</Form.Label>
+            <Form.Control
+              style={{  borderRadius:'10px' ,fontWeight:'bold'}}
+              type='name'
+              placeholder='Enter name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+
+          <Form.Group controlId='email' style={{marginTop:'10px'}}>
+            <Form.Label style={{  borderRadius:'10px' ,fontWeight:'bold',color:'white'}}>Email Address</Form.Label>
+            <Form.Control
+              style={{  borderRadius:'10px' ,fontWeight:'bold'}}
+              type='email'
+              placeholder='Enter email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+
+          <Form.Group controlId='password 'style={{marginTop:'10px'}}>
+            <Form.Label style={{  borderRadius:'10px' ,fontWeight:'bold' ,color:'white'}}>Password</Form.Label>
+            <Form.Control
+              style={{  borderRadius:'10px' ,fontWeight:'bold'}}
+              type='password'
+              placeholder='Enter password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+
+          <Form.Group controlId='confirmPassword' style={{marginTop:'10px' , fontWeight:'bold'}}>
+            <Form.Label style={{  borderRadius:'10px' ,fontWeight:'bold',color:'white'}}>Confirm Password</Form.Label>
+            <Form.Control
+            style={{  borderRadius:'10px' , fontWeight:'bold'}}
+              type='password'
+              placeholder='Confirm password'
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+
+          <Button style={{  marginTop:'20px'  , marginBottom:'30px', borderRadius:'10px' , background:'transparent' , border:'2px solid white'}} type='submit' variant='primary'>
+            Update
+          </Button>
+        </Form>
+      </Col>
+    </Row>
+    </div>
   )
 }
 
