@@ -38,11 +38,11 @@ const ProductScreen = () => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <Row>
-          <Col md={4}>
-            <Image src={product.image} alt={product.name} fluid />
+          <Col md={4} >
+            <Image  src={product.image} alt={product.name} fluid />
           </Col>
-          <Col md={4}>
-            <ListGroup variant='flush'>
+          <Col md={4} >
+            <ListGroup variant='flush' >
               <ListGroup.Item>
                 <h3>{product.name}</h3>
               </ListGroup.Item>
@@ -58,11 +58,11 @@ const ProductScreen = () => {
               </ListGroup.Item>
             </ListGroup>
           </Col>
-          <Col md={4}>
-            <Card>
-              <ListGroup variant='flush'>
+          <Col md={4} >
+            <Card style={{padding:'26px 0px'}}>
+              <ListGroup variant='flush' style={{padding:'20px 0px'}}>
                 <ListGroup.Item>
-                  <Row>
+                  <Row >
                     <Col>Price:</Col>
                     <Col>
                       <strong>{product.price}</strong>
