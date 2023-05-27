@@ -152,8 +152,8 @@ const PlaceOrderScreen = () => {
                 {error && <Message variant='danger'>{error}</Message>}
               </ListGroup.Item>
 
-              <ListGroup.Item style={{ background:'transparent',color:'white'}}>
-                <Button style={{ background:'transparent',color:'white' ,border:'2px solid white' ,borderRadius:'10px' ,marginTop:'60px'}}
+              <ListGroup.Item style={{ background:'transparent',color:'white' ,paddingTop:'70px'}}>
+                <Button style={{ background:'transparent',color:'white' ,border:'2px solid white' ,borderRadius:'10px' ,}}
                   type='button'
                   className='btn w-100'
                   disabled={cart.cartItems === 0}

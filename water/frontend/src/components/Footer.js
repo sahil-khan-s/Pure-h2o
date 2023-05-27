@@ -13,7 +13,7 @@ const Footer = () => {
       <Container>
         <Row>
         <Col md={3} className="footer-col">
-            <a className='text-decoration-none' href="/AboutScreen">
+            <a className='text-decoration-none' href="/">
             <h4 className='text-white'>Home</h4>
 
             </a>

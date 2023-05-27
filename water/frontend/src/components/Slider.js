@@ -4,6 +4,9 @@ import image1 from '../slider/1.avif'
 import image2 from '../slider/2.jpg'
 import image3 from '../slider/3.jpg'
 import image4 from '../slider/4.jpg'
+import image8 from '../slider/8.jpg'
+
+
 
 const Slider = () => {
   const [index, setIndex] = useState(0)
@@ -37,7 +40,13 @@ const Slider = () => {
       src: image4,
       alt: 'Image 4',
     },
-
+   
+    
+      {
+      id: 8,
+      src: image8,
+      alt: 'Image 4',
+    },
     // Add more image URLs if needed
   ]
 
