@@ -79,4 +79,8 @@ Rating.propTypes = {
   color: PropTypes.string,
 }
 
+Rating.defaultProps = {
+  value: 0, // Provide a default value for the `value` prop
+}
+
 export default Rating

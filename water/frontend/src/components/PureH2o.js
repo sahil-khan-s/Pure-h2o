@@ -25,7 +25,7 @@ const PureH2o = () => {
           </p>
         </div>
         <div>
-         <img src={waterPic } alt="" className='rounded' width={600} />
+         <img src={waterPic } style={{borderRadius:''}} alt="" className='rounded' width={700} />
         </div>
       </div>
     </div>
