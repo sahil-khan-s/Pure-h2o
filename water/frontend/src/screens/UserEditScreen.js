@@ -15,7 +15,7 @@ const UserEditScreen = () => {
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [isAdmin, setIsAdmin] = useState(false)
+  const [isSeller, setIsSeller] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -41,14 +41,14 @@ const UserEditScreen = () => {
       } else {
         setName(user.name)
         setEmail(user.email)
-        setIsAdmin(user.isAdmin)
+        setIsSeller(user.isSeller)
       }
     }
   }, [dispatch, navigate, userId, user, successUpdate])
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(updateUser({ _id: userId, name, email, isAdmin }))
+    dispatch(updateUser({ _id: userId, name, email, isSeller }))
   }
 
   return (
@@ -94,10 +94,10 @@ const UserEditScreen = () => {
               <Form.Check
                 type='checkbox'
                 pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
-                label='Is Admin'
-                checked={isAdmin}
+                label='Is Seller'
+                checked={isSeller}
                 title='Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'
-                onChange={(e) => setIsAdmin(e.target.checked)}
+                onChange={(e) => setIsSeller(e.target.checked)}
               ></Form.Check>
             </Form.Group>
 

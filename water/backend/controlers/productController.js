@@ -5,18 +5,22 @@ const getProducts = asyncHandler(async (req, res) => {
   const pageSize = 8
   const page = Number(req.query.pageNumber) || 1
 
-  const keyword = req.query.keyword ? {
-    name: {
-      $regex: req.query.keyword,
-      $options: 'i'
-    }
-  } : {}
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: 'i',
+        },
+      }
+    : {}
 
   console.log(req.query.keyword)
 
   const count = await Product.count({ ...keyword })
 
-  const products = await Product.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1))
+  const products = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1))
 
   res.json({ products, page, pages: Math.ceil(count / pageSize) })
 })
@@ -35,9 +39,12 @@ const getProductById = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
 
-  if (product) {
+  if (product && req.user._id.equals(product.user._id)) {
     await product.remove()
     res.json({ message: 'Product removed' })
+  } else if (req.user._id !== product.user._id) {
+    res.status(404)
+    throw new Error('Not Authorized as you are not the creator of the product.')
   } else {
     res.status(404)
     throw new Error('Product not found')
@@ -67,7 +74,7 @@ const updateProduct = asyncHandler(async (req, res) => {
 
   const product = await Product.findById(req.params.id)
 
-  if (product) {
+  if (product && req.user._id.equals(product.user._id)) {
     product.name = name
     product.price = price
     product.description = description

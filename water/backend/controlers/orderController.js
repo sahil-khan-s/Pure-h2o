@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler'
-import Order from '../models/OrderModel.js'
+import Order from '../models/orderModel.js'
 
 const addOrderItems = asyncHandler(async (req, res) => {
   const {
@@ -74,7 +74,7 @@ const getMyOrders = asyncHandler(async (req, res) => {
 })
 
 const getOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({ }).populate('user', 'id name')
+  const orders = await Order.find({}).populate('user', 'id name')
   res.json(orders)
 })
 
@@ -94,4 +94,11 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
   }
 })
 
-export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders, getOrders, updateOrderToDelivered }
+export {
+  addOrderItems,
+  getOrderById,
+  updateOrderToPaid,
+  getMyOrders,
+  getOrders,
+  updateOrderToDelivered,
+}

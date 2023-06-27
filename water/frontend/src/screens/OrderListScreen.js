@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listOrders } from '../actions/orderActions'
+import { getUserDetails } from '../actions/userActions'
 
 const OrderListScreen = () => {
   const dispatch = useDispatch()
@@ -17,13 +18,19 @@ const OrderListScreen = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  const userDetails = useSelector((state) => state.userDetails)
+  const { user } = userDetails
+
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
+    if(!user || !user.name) {
+      dispatch(getUserDetails())
+    }
+    if (userInfo && (userInfo.isAdmin || user.isSeller)) {
       dispatch(listOrders())
     } else {
       navigate('/login')
     }
-  }, [dispatch, navigate, userInfo])
+  }, [dispatch, navigate, userInfo, user])
 
 
   return (

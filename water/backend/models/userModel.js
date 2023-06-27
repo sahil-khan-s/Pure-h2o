@@ -21,6 +21,23 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    isSeller: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    postalCode: {
+      type: String,
+      required: true,
+    },
   },
   {
     timeStamps: true,

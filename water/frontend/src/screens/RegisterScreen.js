@@ -13,6 +13,9 @@ const RegisterScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [address, setAddress] = useState('')
+  const [city, setCity] = useState('')
+  const [postalCode, setPostalCode] = useState('')
   const [message, setMessage] = useState(null)
 
   const dispatch = useDispatch()
@@ -35,7 +38,7 @@ const RegisterScreen = () => {
     if (password !== confirmPassword) {
       setMessage('Password do not match')
     } else {
-      dispatch(register(name, email, password))
+      dispatch(register(name, email, password, address, city, postalCode))
     }
   }
 
@@ -49,7 +52,7 @@ const RegisterScreen = () => {
         <Form.Group controlId='name'>
           <Form.Label style={{ color: 'white' }}>Name</Form.Label>
           <Form.Control
-            pattern='[A-Za-z]'
+            // pattern='[A-Za-z]'
             type='text'
             placeholder='Enter name'
             value={name}
@@ -92,6 +95,42 @@ const RegisterScreen = () => {
             placeholder='Confirm password'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+
+        <Form.Group controlId='address'>
+          <Form.Label style={{ color: 'white', paddingTop: '10px' }}>
+            Address
+          </Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter Address'
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+
+        <Form.Group controlId='city'>
+          <Form.Label style={{ color: 'white', paddingTop: '10px' }}>
+            City
+          </Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter City'
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+
+        <Form.Group controlId='postalCode'>
+          <Form.Label style={{ color: 'white', paddingTop: '10px' }}>
+            Postal Code
+          </Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter Postalcode'
+            value={postalCode}
+            onChange={(e) => setPostalCode(e.target.value)}
           ></Form.Control>
         </Form.Group>
 

@@ -12,6 +12,7 @@ import {
   createProduct,
 } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
+import { getUserDetails } from '../actions/userActions'
 
 const ProductListScreen = () => {
   const dispatch = useDispatch()
@@ -40,11 +41,20 @@ const ProductListScreen = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  const userDetails = useSelector((state) => state.userDetails)
+  const { user } = userDetails
+
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET })
 
-    if (!userInfo.isAdmin) {
-      navigate('/login')
+    if (!user || !user.name) {
+      dispatch(getUserDetails())
+    }
+
+    if ((!userInfo || !userInfo.isAdmin) && (!user || !user.isSeller)) {
+      navigate('/')
+    } else {
+      dispatch(listProducts())
     }
 
     if (successCreate) {
@@ -59,7 +69,8 @@ const ProductListScreen = () => {
     successDelete,
     successCreate,
     createdProduct,
-    pageNumber
+    pageNumber,
+    user,
   ])
 
   const deleteHandler = (id) => {
@@ -79,9 +90,11 @@ const ProductListScreen = () => {
           <h1>Products</h1>
         </Col>
         <Col className='text-rigth'>
-          <Button className='my-3 mt-10' onClick={createProductHandler}>
-            <i className='fas fa-plus'></i> Create Product
-          </Button>
+          {user.isSeller && (
+            <Button className='my-3 mt-10' onClick={createProductHandler}>
+              <i className='fas fa-plus'></i> Create Product
+            </Button>
+          )}
         </Col>
       </Row>
       {loadingDelete && <Loader />}
@@ -106,7 +119,7 @@ const ProductListScreen = () => {
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
+              {/* {products.map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
@@ -128,7 +141,38 @@ const ProductListScreen = () => {
                     </Button>
                   </td>
                 </tr>
-              ))}
+              ))} */}
+              {products.map((product) => {
+                return (
+                  <tr key={product._id}>
+                    <td>{product._id}</td>
+                    <td>{product.name}</td>
+                    <td>{product.price}Rs</td>
+                    <td>{product.category}</td>
+                    <td>{product.brand}</td>
+                    <td>
+                      {(product.user === user._id || user.isAdmin) && (
+                        <>
+                          <LinkContainer
+                            to={`/admin/product/${product._id}/edit`}
+                          >
+                            <Button variant='light' className='btn-sm'>
+                              <i className='fas fa-edit'></i>
+                            </Button>
+                          </LinkContainer>
+                          <Button
+                            variant='danger'
+                            className='btn-sm'
+                            onClick={() => deleteHandler(product._id)}
+                          >
+                            <i className='fas fa-trash'></i>
+                          </Button>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </Table>
           <Paginate pages={pages} page={page} isAdmin={true} />

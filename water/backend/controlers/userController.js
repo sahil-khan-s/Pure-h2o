@@ -22,7 +22,7 @@ const authUser = asyncHandler(async (req, res) => {
 })
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body
+  const { name, email, password, address, city, postalCode } = req.body
 
   const userExist = await User.findOne({ email })
 
@@ -35,6 +35,9 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
+    address,
+    city,
+    postalCode,
   })
 
   if (user) {
@@ -43,6 +46,10 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      isSeller: user.isSeller,
+      address: user.address,
+      city: user.city,
+      postalCode: user.postalCode,
       token: generateToken(user._id),
     })
   } else {
@@ -60,6 +67,10 @@ const getUserProfile = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      isSeller: user.isSeller,
+      address: user.address,
+      city: user.city,
+      postalCode: user.postalCode,
     })
   } else {
     res.status(404)
@@ -100,12 +111,12 @@ const getUsers = asyncHandler(async (req, res) => {
 const deleteUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id)
 
-  if (user) {
+  if (user.isAdmin) {
     await user.remove()
     res.json({ message: 'User removed' })
   } else {
     res.status(404)
-    throw new Error('User not found')
+    throw new Error('User not Authorized')
   }
 })
 
@@ -125,7 +136,7 @@ const updateUser = asyncHandler(async (req, res) => {
   if (user) {
     user.name = req.body.name || user.name
     user.email = req.body.email || user.email
-    user.isAdmin = req.body.isAdmin
+    user.isSeller = req.body.isSeller
 
     const updatedUser = await user.save()
 
@@ -133,7 +144,7 @@ const updateUser = asyncHandler(async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin,
+      isSeller: updatedUser.isSeller,
     })
   } else {
     res.status(404)

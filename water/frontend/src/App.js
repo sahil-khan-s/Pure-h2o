@@ -40,9 +40,11 @@ function App() {
             <Route path='/admin/userlist' element={<UserListScreen />} />
             <Route path='/admin/user/:id/edit' element={<UserEditScreen />} />
             <Route path='/admin/productlist' exact element={<ProductListScreen />} />
+            {/* <Route path='/seller/productlist' exact element={<ProductListScreen />} /> */}
             <Route path='/admin/productlist/:pageNumber' exact element={<ProductListScreen />} />
             <Route path='/admin/product/:id/edit' element={<ProductEditScreen />} />
             <Route path='/admin/orderlist' element={<OrderListScreen />} />
+            {/* <Route path='/seller/orderlist' element={<OrderListScreen />} /> */}
             <Route path='/search/:keyword' exact element={<HomeScreen />} />
             <Route path='/' exact element={<HomeScreen />} />
             <Route path='/page/:pageNumber' exact element={<HomeScreen />} />

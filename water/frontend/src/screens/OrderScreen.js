@@ -16,6 +16,7 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from '../constants/orderConstants'
+import { getUserDetails } from '../actions/userActions'
 
 const OrderScreen = () => {
   const { id } = useParams()
@@ -38,6 +39,9 @@ const OrderScreen = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  const userDetails = useSelector((state) => state.userDetails)
+  const { user } = userDetails
+
   if (order && !loading) {
     const addDecimals = (num) => {
       return (Math.round(num * 100) / 100).toFixed(2)
@@ -49,8 +53,11 @@ const OrderScreen = () => {
   }
 
   useEffect(() => {
-    if(!userInfo) {
+    if (!userInfo) {
       navigate('/login')
+    }
+    if (!user) {
+      dispatch(getUserDetails())
     }
 
     const addPayPalScript = async () => {
@@ -76,7 +83,7 @@ const OrderScreen = () => {
         setSdkReady(true)
       }
     }
-  }, [dispatch, orderId, successPay, order, successDeliver])
+  }, [dispatch, orderId, successPay, order, successDeliver, navigate, userInfo, user])
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(orderId, paymentResult))
@@ -217,17 +224,20 @@ const OrderScreen = () => {
                   </ListGroup.Item>
                 )}
                 {loadingDeliver && <Loader />}
-                {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
-                  <ListGroup.Item>
-                    <Button
-                      type='button'
-                      className='btn btn-block'
-                      onClick={deliverHandler}
-                    >
-                      Mark as delivered
-                    </Button>
-                  </ListGroup.Item>
-                )}
+                {user &&
+                  user.isSeller &&
+                  order.isPaid &&
+                  !order.isDelivered && (
+                    <ListGroup.Item>
+                      <Button
+                        type='button'
+                        className='btn btn-block'
+                        onClick={deliverHandler}
+                      >
+                        Mark as delivered
+                      </Button>
+                    </ListGroup.Item>
+                  )}
               </ListGroup>
             </Card>
           </Col>
