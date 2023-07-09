@@ -85,9 +85,9 @@ const ProductListScreen = () => {
 
   return (
     <>
-      <Row className='align-items-center'>
+      <Row style={{color:"white " , marginTop:"50px" , paddingLeft:"70px"}} className='align-items-center '>
         <Col>
-          <h1>Products</h1>
+          <h1 style={{color:"white " ,}}>Products</h1>
         </Col>
         <Col className='text-rigth'>
           {user.isSeller && (
@@ -109,7 +109,7 @@ const ProductListScreen = () => {
         <>
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
-              <tr>
+              <tr style={{color:"white " ,}}>
                 <th>ID</th>
                 <th>NAME</th>
                 <th>PRICE</th>
@@ -144,13 +144,13 @@ const ProductListScreen = () => {
               ))} */}
               {products.map((product) => {
                 return (
-                  <tr key={product._id}>
-                    <td>{product._id}</td>
-                    <td>{product.name}</td>
-                    <td>{product.price}Rs</td>
-                    <td>{product.category}</td>
-                    <td>{product.brand}</td>
-                    <td>
+                  <tr style={{color:"white " ,}} key={product._id}>
+                    <td style={{color:"white " ,}}>{product._id}</td>
+                    <td style={{color:"white " ,}}>{product.name}</td>
+                    <td style={{color:"white " ,}}>{product.price}Rs</td>
+                    <td style={{color:"white " ,}}>{product.category}</td>
+                    <td style={{color:"white " ,}}>{product.brand}</td>
+                    <td style={{color:"white " ,}}>
                       {(product.user === user._id || user.isAdmin) && (
                         <>
                           <LinkContainer

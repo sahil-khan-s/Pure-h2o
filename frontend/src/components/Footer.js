@@ -49,7 +49,7 @@ const Footer = () => {
         <hr />
         <Row>
           <Col className="text-center">
-            <p className="mb-0 text-white " style={{fontSize:'23px' , fontWeight: 'normal'}}>
+            <p className="mt-5 text-white " style={{fontSize:'16px' , fontWeight: 'normal'}}>
               &copy; {new Date().getFullYear()} Pure Water. All rights
               reserved.
             </p>

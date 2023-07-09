@@ -36,15 +36,16 @@ const UserListScreen = () => {
 
   return (
     <>
-      <h1>Users</h1>
+    <div className='bg-green-500'>
+      <h1 style={{color:"white" , marginTop:"50px", textAlign:'center' }}>Users</h1>
       {loading || users === undefined ? (
         <Loader />
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
-        <Table striped bordered hover responsive className='table-sm'>
-          <thead>
-            <tr>
+        <Table style={{color:"white" ,}} striped bordered hover responsive className='table-sm'>
+          <thead style={{color:"white" , fontSize:"30px"}}>
+            <tr style={{color:"white"}}>
               <th>ID</th>
               <th>NAME</th>
               <th>EMAIL</th>
@@ -52,13 +53,13 @@ const UserListScreen = () => {
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{color:"white" ,}}>
             {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user._id}</td>
-                <td>{user.name}</td>
-                <td>
-                  <a href={`mailto:${user.email}`}>{user.email}</a>
+              <tr style={{color:"white" ,}} key={user._id}>
+                <td style={{color:"white" ,}}>{user._id}</td>
+                <td style={{color:"white" ,}}>{user.name}</td>
+                <td style={{color:"white" ,}}>
+                  <a style={{color:"white" ,}} href={`mailto:${user.email}`}>{user.email}</a>
                 </td>
                 <td>
                   {user.isAdmin ? (
@@ -86,6 +87,7 @@ const UserListScreen = () => {
           </tbody>
         </Table>
       )}
+       </div>
     </>
   )
 }
