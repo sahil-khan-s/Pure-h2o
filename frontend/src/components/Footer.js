@@ -9,15 +9,13 @@ const Footer = () => {
             </video>
     <div style={{position:'absolute', top:'200px' , left:'30px', width:'100%'}} className=''>
       
-    <footer style={{}} className="footer ">
+    <footer  className="footer ">
       <Container>
-        <Row>
+        <Row style={{paddingLeft:"330px"}}> 
         <Col md={3} className="footer-col">
             <a className='text-decoration-none' href="/">
             <h4 className='text-white'>Home</h4>
-
             </a>
-            
           </Col>
           <Col md={3} className="footer-col">
           <a className='text-decoration-none' href="/AboutScreen">
@@ -25,30 +23,18 @@ const Footer = () => {
             </a>
           </Col>
           <Col md={3} className="footer-col">
-          <a className='text-decoration-none' href="/ContactUs">
-            <h4 className='text-white '>Contact Us</h4>
-            </a>
-          </Col>
-          <Col md={3} className="footer-col">
-          <a className='text-decoration-none' href="/">
+          <a className='text-decoration-none'
+  href='https://m-ismaeel-portfolio-w9fo.vercel.app/'
+  target='_blank'
+  rel='noopener noreferrer'
+  >
             <h4 className='text-white'>Follow Us</h4>
           </a>
-            <div style={{display:'flex' , justifyContent:'space-between',width:'90px' ,margin:'0 0 0 20px'}} className="social-icons ">
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <i style={{color:'white' , fontSize:'22px'}}  className="fab fa-facebook"></i>
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <i style={{color:'white' , fontSize:'22px'}}  className="fab fa-twitter"></i>
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <i style={{color:'white' , fontSize:'22px'}} className="fab fa-instagram"></i>
-              </a>
-            </div>
           </Col>
         </Row>
         <hr />
         <Row>
-          <Col className="text-center">
+          <Col className="text-center mt-4">
             <p className="mt-5 text-white " style={{fontSize:'16px' , fontWeight: 'normal'}}>
               &copy; {new Date().getFullYear()} Pure Water. All rights
               reserved.
