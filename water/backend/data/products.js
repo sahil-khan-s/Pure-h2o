@@ -1,6 +1,6 @@
 const products = [
   {
-    name: '500ml Bottle',
+    name: 'Nestle 500ml Bottle',
     image: '/images/nestlesmall.jpg',
     description:
       'Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
@@ -12,7 +12,7 @@ const products = [
     numReviews: 3,
   },
   {
-    name: '5 Litre Bottle',
+    name: 'Nestle 5 Litre Bottle',
     image: '/images/nestlemid1.jpg',
     description:
       'Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life',
@@ -24,7 +24,7 @@ const products = [
     numReviews: 2,
   },
   {
-    name: '25 Litre Bottle',
+    name: 'Nestle 25 Litre Bottle',
     image: '/images/nestlebig1.jpg',
     description:
       'Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design',
@@ -36,7 +36,7 @@ const products = [
     numReviews: 3,
   },
   {
-    name: '1.5 Litre Bottle',
+    name: 'Aquafina 1.5 Litre Bottle',
     image: '/images/aquafinasmall.jpg',
     description:
       'The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music',
@@ -48,7 +48,7 @@ const products = [
     numReviews: 4,
   },
   {
-    name: '5 Litre Bottle',
+    name: 'Aquafina 5 Litre Bottle',
     image: '/images/aquafinamid.jpg',
     description:
       'Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience',
@@ -60,7 +60,7 @@ const products = [
     numReviews: 3,
   },
   {
-    name: '800ml Bottle',
+    name: 'Voss 800ml Bottle',
     image: '/images/voss800.jpg',
     description:
       'Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space',
